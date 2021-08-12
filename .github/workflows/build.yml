@@ -15,6 +15,7 @@ jobs:
       # https://chromium.googlesource.com/chromiumos/docs/+/main/developer_guide.md#Install-development-tools
       - name: Install depot_tools
         run: |
+          cd ~
           sudo apt-get install git curl xz-utils python3-pkg-resources python3-virtualenv python3-oauth2client
           git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
           echo "PATH=~/depot_tools:$PATH" >> $GITHUB_ENV
@@ -28,8 +29,10 @@ jobs:
       # 
       - name: Get the source
         run: |
+          cd ~
           umask 022
           mkdir -p ~/chromiumos
           cd ~/chromiumos
+          echo $PATH
           repo init -u https://chromium.googlesource.com/chromiumos/manifest
           repo sync -j8
