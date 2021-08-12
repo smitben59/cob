@@ -15,8 +15,7 @@ jobs:
       # https://chromium.googlesource.com/chromiumos/docs/+/main/developer_guide.md#Install-development-tools
       - name: Install depot_tools
         run: |
-          sudo add-apt-repository universe
-          sudo apt-get install git gitk git-gui curl xz-utils python3-pkg-resources python3-virtualenv python3-oauth2client
+          sudo apt-get install git curl xz-utils python3-pkg-resources python3-virtualenv python3-oauth2client
           git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
           echo "PATH=~/depot_tools:$PATH" >> $GITHUB_ENV
 
