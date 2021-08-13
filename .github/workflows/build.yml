@@ -36,3 +36,23 @@ jobs:
           echo $PATH
           repo init -u https://chromium.googlesource.com/chromiumos/manifest
           repo sync -j8
+          
+      - name: GSUtil Config
+        env:
+          BOTO: ${{ secrets.BOTO }}
+        run: echo "${BOTO}" > ~/.boto
+
+      - name: CrOS SDK
+        run: cros_sdk --download
+          
+      - name: Initialize board
+        run: cros_sdk -- setup_board --board=amd64-generic --default
+        
+      - name: Set password
+        run: cros_sdk -- echo "chronos" | ~/trunk/src/scripts/set_shared_user_password.sh
+        
+      - name: Build packages
+        run: cros_sdk -- ~/trunk/src/scripts/build_packages
+        
+      - name: Build image
+        run: cros_sdk -- ~/trunk/src/scripts/build_image --noenable_rootfs_verification base
