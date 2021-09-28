@@ -66,3 +66,7 @@ jobs:
         run: |
           cd ~/chromiumos
           ~/depot_tools/cros_sdk -- ~/trunk/src/scripts/build_image --noenable_rootfs_verification base
+
+      - name: Disk Usage
+        run: |
+          du -sch chromiumos
