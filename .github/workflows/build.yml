@@ -23,8 +23,8 @@ jobs:
       # https://chromium.googlesource.com/chromiumos/docs/+/main/developer_guide.md#configure-git
       - name: Setup git
         run: |
-          git config --global user.email "jay0lee@gmail.com"
-          git config --global user.name "Jay Lee"
+          git config --global user.email "topsoftware4@gmail.com"
+          git config --global user.name "Chrome Book"
         
       # 
       - name: Get the source
@@ -50,7 +50,7 @@ jobs:
       - name: Initialize board
         run: |
           cd ~/chromiumos
-          ~/depot_tools/cros_sdk -- setup_board --board=amd64-generic --default
+          ~/depot_tools/cros_sdk -- setup_board --board=x86-generic --default
         
       - name: Set password
         run: |
